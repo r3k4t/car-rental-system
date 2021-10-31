@@ -1,0 +1,141 @@
+<html>
+<head> <title> Start Trip </title> 
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+
+
+
+function set_daily_limit() {
+<!--	document.getElementById("div_daily_limit").style.display = "block";-->
+
+
+
+
+}
+</script>
+
+
+
+</head>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+<style>
+button {
+  position: relative;
+  overflow: hidden;
+  transition: background 400ms;
+  color: #fff;
+  background-color: #2196F3;
+  padding: 1rem 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  outline: 0;
+  border: 0;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  
+}
+
+body {
+    font-family: 'Roboto';font-size: 22px;
+}
+</style>
+
+
+{% load static %}
+<body style="background-image: url('{% static "background.png" %}');" >
+	
+<table align=center height=50% width=50% style="border-collapse:separate;border:solid lightgrey 1px;border-radius:6px;-moz-border-radius:6px;box-shadow: 5px 5px 5px #888; background-color: white;">
+	<tr>
+        <th align=center colspan=2 style="padding:40px;margin: auto;text-align: center;font-size:60px">Start Trip</th>
+    </tr>
+	
+	<tr>
+	<td align=left style="padding:40px;">
+
+	<form method="GET">
+		{% csrf_token %}
+
+		<label for="pickuplocation"> Pickup Location: </label>
+		<select name="pickuplocation" id = "pickuplocation" value="{{selected_location}}">
+
+			{% for entry in locations %}
+    			<option value="{{ entry.location_id }}">{{ entry.location_id}} </option>
+			{% endfor %}
+		</select>
+		<br> <br>
+
+		<input type="submit" value="Confirm Location"> </input>
+
+		<br><br>
+
+
+		<label for="vin"> Vehicle Identification Number: </label>
+		<select name="vin" id = "vin" onselect="set_daily_limit()">
+
+			{% for entry in vehicles %}
+    			<option value="{{ entry.vin }}">{{ entry.vin }}</option>
+			{% endfor %}
+		</select>
+		<br> <br>
+
+			<input type="submit" value="Confirm Vehicle"> </input>
+
+		<br><br>
+
+		<div id="div_daily_limit">
+			<label for="dailylimit"> Daily Limit: </label>
+			<input type="text" id="dailylimit" name="dailylimit" disabled value="{{ daily_limit }}">
+
+		</div>
+
+		<br>
+	</form>
+	
+	<form method="POST">
+		{% csrf_token %}
+
+
+		<label for="dropofflocation"> Dropoff Location: </label>
+		<select name="dropofflocation" id = "dropofflocation">
+
+			{% for entry in locations %}
+    			<option value="{{ entry.location_id }}">{{ entry.location_id}} </option>
+			{% endfor %}
+		</select>
+		<br> <br>
+
+
+		
+		<label for="pickupdate"> Pick Up Date: </label>
+		<input type="datetime-local" id="pickupdate" name="pickupdate">
+		<br>
+		
+<!--		<label for="dropoffdate"> Drop Off Date: </label>-->
+<!--		<input type="date" id="dropoffdate" name="dropoffdate">-->
+<!--		<br>-->
+		
+		<label for="startodometer"> Start Odometer: </label>
+		<input type="text" id="startodometer" name="startodometer">
+		<br>
+		
+		<label for="endodometer"> End Odometer: </label>
+		<input type="text" id="endodometer" name="endodometer" disabled>
+		<br>
+		
+
+		
+		<input type="submit" value="Submit"> </input> 
+	</form>
+		</td>
+	</tr>
+	</table>
+	
+</body>
+</html>

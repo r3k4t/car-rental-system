@@ -1,0 +1,102 @@
+<html>
+<head> <title> All customers </title> </head>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+<style>
+button {
+  position: relative;
+  overflow: hidden;
+  transition: background 400ms;
+  color: #fff;
+  background-color: #2196F3;
+  padding: 1rem 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  outline: 0;
+  border: 0;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  
+}
+
+body {
+    font-family: 'Roboto';font-size: 22px;
+}
+
+td, th {
+  border: 1px solid black;
+}
+
+table {
+	
+	width: 100%;
+}
+
+</style>
+
+
+{% load static %}
+<body style="background-image: url('{% static "background.png" %}');">
+	
+	<table align=center width=90% style="border-collapse:separate;border:solid lightgrey 1px;border-radius:6px;-moz-border-radius:6px;box-shadow: 5px 5px 5px #888; background-color: white;">
+	
+		<thead>
+				<tr>
+					<th align=center colspan=9 style="padding:40px;margin: auto;text-align: center;font-size:60px">Customer View</th>
+				</tr>
+				<tr>
+					<th>
+						ID
+					</th>
+					<th>
+						First Name
+					</th>
+					<th>
+						last Name
+					</th>
+					<th>
+						Street
+					</th>
+					<th>
+						City
+					</th>
+					<th>
+						State
+					</th>
+					<th>
+						Email
+					</th>
+					<th>
+						Phone
+					</th>
+					<th>
+						Type
+					</th>
+				</tr>
+		</thead>
+
+		<tbody>
+		
+
+		{%  for entry in customer_data %}
+
+		<tr>
+			<td>{{ entry.cust_id }}</td>
+			<td>{{ entry.cust_fname }}</td>
+			<td>{{ entry.cust_lname }}</td>
+			<td>{{ entry.cust_street }}</td>
+			<td>{{ entry.cust_city }}</td>
+			<td>{{ entry.cust_state }}</td>
+			<td>{{ entry.cust_email }}</td>
+			<td>{{ entry.cust_phone }}</td>
+			<td>{{ entry.cust_type }}</td>
+		</tr>
+
+		{% endfor %}
+
+		</tbody>
+
+	</table>
+	
+</body>
+</html>

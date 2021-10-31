@@ -1,0 +1,53 @@
+<html>
+<head> <title> Start </title> </head>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+<style>
+button {
+  position: relative;
+  overflow: hidden;
+  transition: background 400ms;
+  color: #fff;
+  background-color: #2196F3;
+  padding: 1rem 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  outline: 0;
+  border: 0;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  
+}
+
+body {
+    font-family: 'Roboto';font-size: 22px;
+}
+</style>
+
+
+{% load static %}
+<body style="background-image: url('{% static "background.png" %}');">
+	<br>
+	
+	<table align=center height=50% width=50% style="border-collapse:separate;border:solid lightgrey 1px;border-radius:6px;-moz-border-radius:6px;box-shadow: 5px 5px 5px #888; background-color: white;">
+	<tr>
+        <th align=center colspan=2 style="padding:40px;margin: auto;text-align: center;font-size:60px">Employee Portal</th>
+    </tr>
+	
+	<tr>
+	<td align=center>
+		<button onclick="location.href='{{'employeecustomerview'}}';"> View Customer </button>
+		<button onclick="location.href='{{'employeesendcoupon'}}';"> Send coupons to customers </button>
+		<button onclick="location.href='{{'employeeaddvehicle'}}';"> Add Vehicle Data </button>
+	</td>
+	<tr>
+	
+	<tr>
+	<td align=center>
+		<button onclick="location.href='{{'employeeaddlocation'}}';"> Add Location Data</button>
+		<button onclick="location.href='{{'employeeaddvehicleclass'}}';"> Add Vehicle Class Data</button>
+	</td>
+	</tr>
+	</table>
+</body>
+</html>

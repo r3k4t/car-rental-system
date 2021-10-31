@@ -1,0 +1,55 @@
+<html>
+<head> <title> Start </title> </head>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+<style>
+button {
+  position: relative;
+  overflow: hidden;
+  transition: background 400ms;
+  color: #fff;
+  background-color: #2196F3;
+  padding: 1rem 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  outline: 0;
+  border: 0;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  
+}
+
+body {
+    font-family: 'Roboto';font-'size: 22px;
+    /*background-image: url('background.png');*/
+}
+
+
+</style>
+<!--background="background.png"-->
+<!--background-color:#FFFFFF-->
+
+{% load static %}
+<body style="background-image: url('{% static "background.png" %}');" >
+	<br>
+	<table align=center height=40% width=50% style="border-collapse:separate;border:solid lightgrey 1px;border-radius:6px;-moz-border-radius:6px;box-shadow: 5px 5px 5px #888; background-color: white;">
+	 <tr>
+        <th align=center colspan=2 style="padding:40px;margin: auto;text-align: center;font-size:60px">KPRC CAR RENTALS</th>
+    </tr>
+	<tr>
+	<td align=center>
+	<!-- <button onclick="{{'employeeportal'}}"> Employee </button>  -->
+<!--   <a href="{{'employeeportal'}}"> Employee </a> -->
+<button onclick="location.href='{% url 'employeeportal' %}';"> Employee </button>
+<!-- 	<a href="{{'customer_login'}}"> Customer </a> -->
+<!-- 	<button onclick="window.location.href='employeeportal.html';"> Customer </button>  -->
+	</td>
+	
+	<td align=center>
+<button onclick="location.href='{{'customer_login'}}';"> Customer </button> 
+	</td>
+	</tr>
+	</table>
+
+</body>
+</html>

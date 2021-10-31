@@ -1,0 +1,135 @@
+	<html>
+<head> <title> End Trip </title> 
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+
+
+
+</head>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+<style>
+button {
+  position: relative;
+  overflow: hidden;
+  transition: background 400ms;
+  color: #fff;
+  background-color: #2196F3;
+  padding: 1rem 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  outline: 0;
+  border: 0;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  
+}
+
+body {
+    font-family: 'Roboto';font-size: 22px;
+}
+</style>
+
+
+{% load static %}
+<body style="background-image: url('{% static "background.png" %}');">
+	
+	<table align=center height=50% width=50% style="border-collapse:separate;border:solid lightgrey 1px;border-radius:6px;-moz-border-radius:6px;box-shadow: 5px 5px 5px #888; background-color: white;">
+	<tr>
+        <th align=center colspan=2 style="padding:40px;margin: auto;text-align: center;font-size:60px">End Your Trip</th>
+    </tr>
+
+	<tr>
+	<td align=left style="padding:40px;">
+	
+		<form method="GET">
+			<label for="rental_service_id"> Rental Service ID: </label>
+				<select name="rental_service_id" id = "rental_service_id">
+
+					{% for entry in rental_data %}
+						<option value="{{ entry.rental_service_id }}">{{ entry.rental_service_id }}</option>
+					{% endfor %}
+				</select>
+				<br><br>
+
+			<input type="submit" value="Confirm Rental Service"> </input>
+
+
+
+			<br><br>
+
+			<label for="coupon"> Add Coupon: </label>
+				<select name="coupon" id = "coupon">
+
+					{% for entry in coupon_data %}
+						<option value="{{ entry.coupon_id }}">{{ entry.coupon_id }}</option>
+					{% endfor %}
+				</select>
+				<br><br>
+
+			<input type="submit" value="Apply Coupon"> </input>
+
+		</form>
+
+
+
+		<form method="POST">
+		{% csrf_token %}
+
+		<label for="endodometer"> End Odometer: </label>
+		<input type="text" id="endodometer" name="endodometer">
+		<br>
+		
+<!--		<label for="dropoffdate"> Drop Off Date: </label>-->
+<!--		<input type="date" id="dropoffdate" name="dropoffdate">-->
+<!--		<br>-->
+		
+
+		
+
+
+<!--		</form>-->
+
+		<br><br>
+
+<!--		<form method="GET">-->
+
+			<label for="payment_method"> Payment Method: </label>
+			<br>
+
+				<select name="payment_method" id = "payment_method">
+						<option value="credit_card">Credit Card</option>
+                        <option value="debit_card">Debit Card</option>
+				</select>
+				<br><br>
+
+			<label for="card_number"> Card number: </label>
+			<input type="number" id="card_number" name="card_number">
+			<br> <br>
+
+
+
+
+
+			<input type="submit" value="Generate Invoice"> </input>
+		<br> <br>
+		<label for="total"> Your Total is: 	</label>
+		<input type="text" id="total" value="{{ invoice }}">
+		
+	</form>
+
+
+		<button onclick="location.href='{{'payment_page'}}';"> Pay Now </button>
+	</td>
+	</tr>
+	</table>
+	
+</body>
+</html>

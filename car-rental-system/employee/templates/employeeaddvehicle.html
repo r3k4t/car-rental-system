@@ -1,0 +1,80 @@
+<html>
+<head> <title> Start </title> </head>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+<style>
+button {
+  position: relative;
+  overflow: hidden;
+  transition: background 400ms;
+  color: #fff;
+  background-color: #2196F3;
+  padding: 1rem 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  outline: 0;
+  border: 0;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  
+}
+
+body {
+    font-family: 'Roboto';font-size: 22px;
+}
+</style>
+
+
+{% load static %}
+<body style="background-image: url('{% static "background.png" %}');">
+	<table align=center height=50% width=50% style="border-collapse:separate;border:solid lightgrey 1px;border-radius:6px;-moz-border-radius:6px;box-shadow: 5px 5px 5px #888; background-color: white;">
+	<tr>
+        <th align=center colspan=2 style="padding:40px;margin: auto;text-align: center;font-size:60px">Add Vehicle Data</th>
+    </tr>
+	
+	<tr>
+	<td align=left style="padding:40px;">
+	<form method="POST">
+		{% csrf_token %}
+<!--		<label for="vin"> VIN: </label>-->
+<!--		<br>-->
+<!--		<input type="text" id="vin" name="vin">-->
+<!--		<br> <br>-->
+		
+		<label for="license"> License Plate: </label>
+		<br>
+		<input type="text" id="license" name="license">
+		<br> <br>
+		
+		<label for="make"> Make: </label>
+		<br>
+		<input type="text" id="make" name="make">
+		<br> <br>
+		
+		<label for="model"> Model: </label>
+		<br>
+		<input type="text" id="model" name="model">
+		<br> <br>
+
+		<label for="year"> Year: </label>
+		<br>
+		<input type="date" id="year" name="year">
+		<br> <br>
+		
+		<label for="vehicle_class_id"> Vehicle Class: </label>
+		<select name="vehicle_class" id = "vehicle_class_id">
+
+			{% for entry in v_class %}
+    			<option value="{{ entry.class_id }}">{{ entry.class_name }}</option>
+			{% endfor %}
+		</select>
+		<br> <br>
+		
+		<input type="submit" value="Submit"> </input> 
+	</form>
+	</tr>
+	</td>
+	</table>
+	
+</body>
+</html>

@@ -1,0 +1,73 @@
+<html>
+<head> <title> Send Coupon </title> </head>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+<style>
+button {
+  position: relative;
+  overflow: hidden;
+  transition: background 400ms;
+  color: #fff;
+  background-color: #2196F3;
+  padding: 1rem 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  outline: 0;
+  border: 0;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+
+}
+
+body {
+    font-family: 'Roboto';font-size: 22px;
+}
+</style>
+
+{% load static %}
+<body style="background-image: url('{% static "background.png" %}');">
+	
+	<table align=center height=50% width=50% style="border-collapse:separate;border:solid lightgrey 1px;border-radius:6px;-moz-border-radius:6px;box-shadow: 5px 5px 5px #888; background-color: white;">
+	<tr>
+        <th align=center colspan=2 style="padding:40px;margin: auto;text-align: center;font-size:60px">Send coupon to customer</th>
+    </tr>
+	
+	<tr>
+	<td align=left style="padding:40px;">
+	<form method="POST">
+		{% csrf_token %}
+
+
+        <label for="cust_id"> Customer Id: </label>
+		<select name="cust_id" id = "cust_id">
+
+			{% for entry in customer_ids %}
+    			<option value="{{ entry.cust_id }}">{{ entry.cust_id }}</option>
+			{% endfor %}
+<!--				<option value="kprc_individual">Individual</option>-->
+<!--				<option value="kprc_corporate">Corporate</option>-->
+		</select>
+		<br> <br>
+
+		<label for="discount"> Discount: </label>
+		<br>
+		<input type="number" id="discount" name="discount">
+		<br> <br>
+
+		<label for="validity"> Valid until: </label>
+		<br>
+		<input type="date" id="validity" name="validity">
+		<br> <br>
+
+
+
+
+
+		<input type="submit" value="Submit"> </input>
+	</form>
+	</tr>
+	</td>
+	</table>
+
+</body>
+</html>

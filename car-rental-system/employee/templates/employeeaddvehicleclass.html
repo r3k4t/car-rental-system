@@ -1,0 +1,73 @@
+<html>
+<head> <title> Start </title> </head>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+<style>
+button {
+  position: relative;
+  overflow: hidden;
+  transition: background 400ms;
+  color: #fff;
+  background-color: #2196F3;
+  padding: 1rem 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  outline: 0;
+  border: 0;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+
+}
+
+body {
+    font-family: 'Roboto';font-size: 22px;
+}
+</style>
+
+
+{% load static %}
+<body style="background-image: url('{% static "background.png" %}');">
+
+	<table align=center height=50% width=50% style="border-collapse:separate;border:solid lightgrey 1px;border-radius:6px;-moz-border-radius:6px;box-shadow: 5px 5px 5px #888; background-color: white;">
+	<tr>
+        <th align=center colspan=2 style="padding:40px;margin: auto;text-align: center;font-size:60px">Add Vehicle Class Data</th>
+    </tr>
+
+	<tr>
+	<td align=left style="padding:40px;">
+	<form method="POST">
+		{% csrf_token %}
+		<label for="classid"> Class ID: </label>
+		<br>
+		<input type="text" id="classid" name="classid">
+		<br> <br>
+
+		<label for="classname"> Class Name: </label>
+		<br>
+		<input type="text" id="classname" name="classname">
+		<br> <br>
+
+		<label for="rental_rate"> Rental Rate: </label>
+		<br>
+		<input type="text" id="rental_rate" name="rental_rate">
+		<br> <br>
+
+		<label for="over_mileage_fee"> Over Mileage Fee: </label>
+		<br>
+		<input type="text" id="over_mileage_fee" name="over_mileage_fee">
+		<br> <br>
+
+
+		<label for="daily_limit"> Daily Limit: </label>
+		<br>
+		<input type="text" id="daily_limit" name="daily_limit">
+		<br> <br>
+
+		<input type="submit" value="Submit"> </input>
+	</form>
+	</tr>
+	</td>
+	</table>
+
+</body>
+</html>
